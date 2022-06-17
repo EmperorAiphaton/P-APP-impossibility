@@ -55,3 +55,23 @@ As last example, we note that we can also modify the axioms and how axioms are e
 <pre>
 python3 EncodePAPPElections.py --P0 --naive --SymmetryBreaking False formula.cnf
 </pre>
+
+## Architecture
+
+Our code is split up in 5 classes. Subsequently we roughly describe the functionality of each class.
+
+<pre>
+EncodePAPPElections.py            This is the interface of our architecture. The class itself only offers a main function, which 
+                                  handles the console input and then calls the FormulaConstructor class. 
+FormulaConstructor.py             This class is responsible for the main functionality of our software: it computes the logical 
+                                  formula for which we want to check whether it is satisfiable or not. For this it relies on 
+                                  three auxiliary classes: AxiomHelper.py, DataManager.py, and PAPPElectionBuilder.py.
+PAPPElectionBuilder.py            This class contains the functionality to compute the set of all approval ballots, committees, 
+                                  and approval profiles for the given input parameters m, n, and k. 
+AxiomHelper.py                    This class contains several helper methods for encoding weak representation and Pareto-optimality.
+                                  In particular, we compute here for each preference profile which committees are feasible given 
+                                  weak representation, Pareto-optimality, etc.
+DataManager.py                    This class contains functionality for handling our data. In particular, this method offers functions
+                                  to compute the variable for a given approval profile and committee and to decide when a voter prefers
+                                  a committee to another one. 
+</pre>
