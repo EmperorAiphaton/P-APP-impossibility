@@ -2,10 +2,11 @@ from FormulaConstructor import FormulaConstructor
 import argparse
 
 if __name__ == '__main__':
-    descrition = "This program computes a logical formula specifying a P-APP voting rule that satisfies anonymity, strategy-proofness, and weak representation. " \
+    """This function parses the command line input and builds the logical formula accordingly."""
+    description = "This program computes a logical formula specifying a P-APP voting rule that satisfies anonymity, strategy-proofness, and weak representation. " \
                  "This code is the basis for the paper \"Strategy-proofness and Proportionality in Party-Approval Multi-winner Elections\" Theo Delemazure, " \
                  "Tom Demeulemeester,  Manuel Eberl, Jonas Israel, and Patrick Lederer [1]"
-    parser = argparse.ArgumentParser(description=descrition)
+    parser = argparse.ArgumentParser(description=description)
     parser.add_argument("OutputFile", type=str, help="Specifies the file in which the logical formula will be written")
     parser.add_argument("-k", type=int, help="size of the committee k (k=3 by default)", default=3)
     parser.add_argument("-m", type=int, help="number of parties m (m=4 by default)", default=4)
