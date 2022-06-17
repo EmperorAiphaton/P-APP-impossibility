@@ -4,7 +4,13 @@ This repository contains the code for generating a logical formula that encodes 
 
 ## Usage
 
-The repository contains a commandline tool, which writes a logical formula into the output file in dimacs format. The logical formula encodes a party-approval voting rule satisfying anonymity, weak representation, and strategy-proofness. Note that our code allows for flexibility beyond just verifying Proposition 1 of Delemazure et al. [1] by allowing variuos parameters. Our code requires python 3.9 or later and the package pycosat must be installed to enable the SATsolving option.
+The repository contains a commandline tool, which writes a logical formula into the output file in dimacs format. The logical formula encodes a party-approval voting rule satisfying anonymity, weak representation, and strategy-proofness. Note that our code allows for flexibility beyond just verifying Proposition 1 of Delemazure et al. [1] by allowing variuos parameters. Our code requires python 3.9 or later and the packages numpy and pycosat.
+
+For installing the dependencies, run the following command. 
+
+<pre>
+pip install -r requirements.txt
+</pre>
 
 <pre> 
 Usage: EncodePAPPElections.py [-h] [-k K] [-m M] [-n N] [--SymmetryBreaking SYMMETRYBREAKING] [--PO] [--naive] [--allprofiles] [--SATsolve] OutputFile
