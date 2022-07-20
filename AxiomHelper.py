@@ -4,13 +4,13 @@ import math
 
 class AxiomHelper:
 
-    def __init__(self, committee_size: int, number_of_parties: int, number_of_voters: int, pareto_optimality: bool, weak_representation_naive: bool):
+    def __init__(self, committee_size: int, number_of_parties: int, number_of_voters: int, pareto_optimality: bool, cleverWR: bool):
         self.m = number_of_parties
         self.k = committee_size
         self.n = number_of_voters
         self.parties = list(np.arange(0, self.m))
         self.pareto_optimality = pareto_optimality
-        self.weak_representation_naive = weak_representation_naive
+        self.cleverWR = cleverWR
 
     def _compute_unique_approval_scores(self, profile: list[set[int]]) -> list[int]:
         """Given a profile, this function computes for every party the number of voters that uniquely approve it"""
@@ -117,15 +117,15 @@ class AxiomHelper:
         feasible_committees: list[list[list[int]]] = []
         for profile in profiles:
             feasible_committees_for_profile = committees
-            if self.weak_representation_naive:
-                feasible_committees_for_profile \
-                    = self._filter_committees_failing_weak_representation(profile, feasible_committees_for_profile)
-            else:
+            if self.cleverWR:
                 value_of_committee_for_ballot = self.compute_numbers_of_approvals(committees, ballots)
                 feasible_committees_for_profile \
                     = self._filter_committees_failing_weak_representation_clever(profile,
                                                                                  feasible_committees_for_profile,
                                                                                  value_of_committee_for_ballot)
+            else:
+                feasible_committees_for_profile \
+                    = self._filter_committees_failing_weak_representation(profile, feasible_committees_for_profile)
             if self.pareto_optimality:
                 feasible_committees_for_profile = \
                     self._filter_committees_failing_pareto_optimality(profile, feasible_committees_for_profile)

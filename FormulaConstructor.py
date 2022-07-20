@@ -9,14 +9,14 @@ import itertools
 class FormulaConstructor:
 
     def __init__(self, committee_size: int, number_of_parties: int, number_of_voters: int, pareto_optimality: bool,
-                 weak_representation_naive: bool,
+                 cleverWR: bool,
                  all_profiles: bool):
         self.election_builder = PAPPElectionBuilder(committee_size, number_of_parties, number_of_voters, all_profiles)
         self.ballots = self.election_builder.compute_approval_ballots()
         self.committees = self.election_builder.compute_all_committees()
         self.profiles = self.election_builder.compute_approval_profiles(self.ballots)
         self.axiom_helper = AxiomHelper(committee_size, number_of_parties,
-                                        number_of_voters, pareto_optimality, weak_representation_naive)
+                                        number_of_voters, pareto_optimality, cleverWR)
         self.feasible_committees_for_all_profiles = \
             self.axiom_helper.compute_feasible_committees_for_all_profiles(self.profiles, self.committees, self.ballots)
         self.data_manager = \
