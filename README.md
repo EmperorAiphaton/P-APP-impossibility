@@ -1,4 +1,4 @@
-# Supplementray material for the paper "Strategyproofness and Proportionality in Party-Approval Multi-Winner Voting"
+# Supplementray material for the paper "Strategyproofness and Proportionality in Party-Approval Multiwinner Voting"
 
 This repository contains the code for generating a logical formula that encodes a party-approval multi-winner voting rule that satisfies anonymity, strategyproofness and weak representation. The formula will be written in an output file in the dimacs format. Thus, the satisfiability can be checked by handing the output file to a SATsolver (such as glucose or minisat) and minimal unsatisfiable sets can be computed by handing the file to MUS extractors (such as muser2 or haifa_muc). In summary, the code allows to verify Proposition 1 of Delemazure et al. [1] by checking the code and reproducing the impossibilty.
 
