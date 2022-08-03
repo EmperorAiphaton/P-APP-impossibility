@@ -1,10 +1,10 @@
-# Supplementray material for the paper "Strategy-Proofness and Proportionality in Party-Approval Multi-Winner Voting"
+# Supplementray material for the paper "Strategyproofness and Proportionality in Party-Approval Multi-Winner Voting"
 
-This repository contains the code for generating a logical formula that encodes a party-approval multi-winner voting rule that satisfies anonymity, strategy-proofness and weak representation. The formula will be written in an output file in the dimacs format. Thus, the satisfiability can be checked by handing the output file to a SATsolver (such as glucose or minisat) and minimal unsatisfiable sets can be computed by handing the file to MUS extractors (such as muser2 or haifa_muc). In summary, the code allows to verify Proposition 1 of Delemazure et al. [1] by checking the code and reproducing the impossibilty.
+This repository contains the code for generating a logical formula that encodes a party-approval multi-winner voting rule that satisfies anonymity, strategyproofness and weak representation. The formula will be written in an output file in the dimacs format. Thus, the satisfiability can be checked by handing the output file to a SATsolver (such as glucose or minisat) and minimal unsatisfiable sets can be computed by handing the file to MUS extractors (such as muser2 or haifa_muc). In summary, the code allows to verify Proposition 1 of Delemazure et al. [1] by checking the code and reproducing the impossibilty.
 
 ## Usage
 
-The repository contains a commandline tool, which writes a logical formula into the output file in dimacs format. The logical formula encodes a party-approval voting rule satisfying anonymity, weak representation, and strategy-proofness. Note that our code allows for flexibility beyond just verifying Proposition 1 of Delemazure et al. [1] by allowing variuos parameters. Our code requires python 3.9 or later and the packages numpy and pycosat.
+The repository contains a commandline tool, which writes a logical formula into the output file in dimacs format. The logical formula encodes a party-approval voting rule satisfying anonymity, weak representation, and strategyproofness. Note that our code allows for flexibility beyond just verifying Proposition 1 of Delemazure et al. [1] by allowing variuos parameters. Our code requires python 3.9 or later and the packages numpy and pycosat.
 
 For installing the dependencies, run the following command. 
 
@@ -38,7 +38,7 @@ The simplest use of our program is without any optional parameter. This will com
 python3 EncodePAPPElections.py formula.cnf
 </pre>
 
-Moreover, the program also supports different numbers of voters, parties, and seats of the committee. For instance, the following example encodes a formula specifying a P-APP voting rule that satisfies anonymity, strategy-proofness, and weak representation for m=3, n=3, k=3. Also, we activated the SATsolve option, which means that the program will automatically apply a SAT solver to check whether formula is satisfiable and print the result. For the given parameters, the corresponding formula is shown to be satisfiable. 
+Moreover, the program also supports different numbers of voters, parties, and seats of the committee. For instance, the following example encodes a formula specifying a P-APP voting rule that satisfies anonymity, strategyproofness, and weak representation for m=3, n=3, k=3. Also, we activated the SATsolve option, which means that the program will automatically apply a SAT solver to check whether formula is satisfiable and print the result. For the given parameters, the corresponding formula is shown to be satisfiable. 
 
 <pre>
 python3 EncodePAPPElections.py -k 3 -m 3 -n 3 --SATsolve formula.cnf
